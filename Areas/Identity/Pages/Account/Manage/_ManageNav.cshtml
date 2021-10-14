@@ -1,0 +1,16 @@
+﻿@inject SignInManager<IdentityUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-area="Identity" asp-page="/Account/Manage/Index">Perfil</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-area="Identity" asp-page="/Account/Manage/Email">E-mail</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-area="Identity" asp-page="/Account/Manage/ChangePassword">Senha</a></li>
+    @if (hasExternalLogins)
+    {
+        <li id="external-logins" class="nav-item"><a id="external-login" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="/Account/Manage/ExternalLogins">Logins externos</a></li>
+    }
+    <li class="nav-item"><a class="nav-link @ManageNavPages.EnderecosNavClass(ViewContext)" id="enderecos" asp-area="Identity" asp-page="/Account/Manage/Enderecos/Index">Endereços</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.PedidosNavClass(ViewContext)" id="pedidos" asp-area="Identity" asp-page="/Account/Manage/Pedidos/Index">Pedidos</a></li>
+
+</ul>

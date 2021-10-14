@@ -1,0 +1,77 @@
+﻿@page
+@model AdasPet.Areas.Identity.Pages.Account.Manage.Enderecos.EditModel
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1>Editar</h1>
+
+<h4>Endereco</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Endereco.ID" />
+            <div class="form-group">
+                <label asp-for="Endereco.CEP" class="control-label"></label>
+                <input asp-for="Endereco.CEP" class="form-control" />
+                <span asp-validation-for="Endereco.CEP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Endereco.Rua" class="control-label"></label>
+                <input asp-for="Endereco.Rua" class="form-control" />
+                <span asp-validation-for="Endereco.Rua" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Endereco.NumeroCasa" class="control-label"></label>
+                <input asp-for="Endereco.NumeroCasa" class="form-control" />
+                <span asp-validation-for="Endereco.NumeroCasa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Endereco.Complemento" class="control-label"></label>
+                <input asp-for="Endereco.Complemento" class="form-control" />
+                <span asp-validation-for="Endereco.Complemento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Endereco.Bairro" class="control-label"></label>
+                <input asp-for="Endereco.Bairro" class="form-control" />
+                <span asp-validation-for="Endereco.Bairro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Endereco.Cidade" class="control-label"></label>
+                <input asp-for="Endereco.Cidade" class="form-control" />
+                <span asp-validation-for="Endereco.Cidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Endereco.Estado" class="control-label"></label>
+                <input asp-for="Endereco.Estado" class="form-control" />
+                <span asp-validation-for="Endereco.Estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Voltar para a lista</a>
+</div>
+
+<!--
+    asp-page-handler: diz qual a função OnPost que devemos chamar quando damos submit
+    aps-route-id: diz para chamar a função com um parametro id igual a "Model.Endereco.ID"
+-->
+<form method="post" asp-page-handler="TornarPrincipal" asp-route-id="@Model.Endereco.ID">
+    <div class="form-group">
+        <input type="submit" value="Tornar Principal" class="btn btn-primary" />
+    </div>
+</form>
+
+<h3>@Model.Message</h3>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
